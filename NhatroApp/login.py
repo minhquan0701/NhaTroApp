@@ -315,6 +315,15 @@ def open_tenant_page():
     tk.Label(login_window, text="Mật khẩu:", bg="#f9f9f9").pack()
     password_entry = tk.Entry(login_window, width=30, show="*")
     password_entry.pack(pady=5)
+# 🆕 Thêm checkbox "Hiện mật khẩu"
+    show_password_var = tk.BooleanVar()
+    tk.Checkbutton(
+        login_window,
+        text="Hiện mật khẩu",
+        variable=show_password_var,
+        bg="#f9f9f9",
+        command=lambda: password_entry.config(show="" if show_password_var.get() else "*")
+    ).pack()
 
     # --- Xử lý đăng nhập ---
     def login():
@@ -503,4 +512,5 @@ tk.Label(root, text="© 2025 - Ứng dụng Quản lý Nhà trọ",
          font=("Arial", 9), bg="#f2f2f2", fg="gray").pack(side="bottom", pady=10)
 
 root.mainloop()
+
 
